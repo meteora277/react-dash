@@ -5,7 +5,18 @@ import arrow from './arrow.svg'
 
 
 const StyledNavbar = Styled.nav`
+    position:relative;
+    z-index: 10;
     display:none;
+   
+
+    li:hover{
+        background-color:#00A3FF;
+    }
+    li:nth-child(1):hover{
+
+        background-color: Transparent;
+    }
 
     @media(max-width: 400px){
     
@@ -28,7 +39,7 @@ const StyledNavbar = Styled.nav`
             width: 100%;
             text-align: left;
             padding: 1rem 2.75rem;
-            font-weight:bold;
+            
         }
 
         li:nth-child(1){

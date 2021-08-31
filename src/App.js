@@ -12,6 +12,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
+    position:relative;
     margin:0;
     padding:0;
     color:white;
@@ -24,7 +25,6 @@ const GlobalStyle = createGlobalStyle`
     @media(max-width: 400px){
       background-position: 10% 100%;
 
-      
     }
   }
 

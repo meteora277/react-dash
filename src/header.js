@@ -4,12 +4,17 @@ import Styled from 'styled-components'
 import hamburger from './menu.svg'
 import Logo from './Logo'
 
+
 const StyledHeader = Styled.header`
+
+
 
     button{
         background-color: Transparent;
         border: none;
+        display:none;
     }
+    
 
     @media(max-width: 400px){
         position:relative;
@@ -21,16 +26,20 @@ const StyledHeader = Styled.header`
             left: 50%;
             transform: translateX(-50%) translateY(-0.2rem)
         }
+        button{
+            display:block;
+        }
+
     }
 
 
 `
 
 
-const Header = () => (
+const Header = (props) => (
 
     <StyledHeader>
-        <button><img src={hamburger} alt="menu"></img></button>
+        <button onClick={props.toggler}><img src={hamburger} alt="menu"></img></button>
         <Logo/>
     </StyledHeader>
 

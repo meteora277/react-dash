@@ -5,6 +5,15 @@ import Styled from 'styled-components'
 import Arrow from './arrow.svg'
 
 const StyledCta = Styled.div`
+
+    h1 {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 64px;
+        line-height: 89%;
+    }
+
     button {
         display: flex;
         justify-content: space-between;
@@ -24,6 +33,14 @@ const StyledCta = Styled.div`
         background-color: #00A3FF;
 
     }
+    p{
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 200;
+        font-size: 48px;
+        line-height: 111.4%;
+        color:#847D93;
+    }
 
 
     @media(max-width:400px){
@@ -39,19 +56,11 @@ const StyledCta = Styled.div`
         h1 {
             margin: 0;
             padding: 0;
-            font-family: Poppins;
-            font-style: normal;
-            font-weight: 800;
             font-size: 48px;
-            line-height: 89%;    
+              
         }
         p{
-            font-family: Poppins;
-            font-style: normal;
-            font-weight: 200;
-            font-size: 34px;
-            line-height: 111.4%;
-            color:#847D93;
+            font-size: 34px;      
         }
 
     }

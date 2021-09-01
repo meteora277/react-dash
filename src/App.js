@@ -61,6 +61,7 @@ function App() {
   const [navbarVisible, setNavbarVisible] = useState(false)
 
   function toggleNavbar(){
+
     if (window.innerWidth > 500){
       setNavbarVisible(false)
     } else (
@@ -102,6 +103,44 @@ function App() {
                 Justify/>
               </Container> 
           </Route>
+
+          <Route path="/2">
+
+            <Container> 
+              <Header 
+                toggler={toggleNavbar}/>
+              <Cta 
+              Heading="My Stats" 
+              Subheading="Here are some stats you might want to look at"
+              Justify/>
+            </Container> 
+          </Route>
+
+          <Route path="/3">
+
+            <Container> 
+              <Header 
+                toggler={toggleNavbar}/>
+              <Cta 
+              Heading="My Stats" 
+              Subheading="Here are some stats you might want to look at"
+              Justify/>
+            </Container> 
+          </Route>
+
+          <Route path="/4">
+
+            <Container> 
+              <Header 
+                toggler={toggleNavbar}/>
+              <Cta 
+              Heading="My Stats" 
+              Subheading="Here are some stats you might want to look at"
+              Justify/>
+            </Container> 
+          </Route>
+
+
 
           <Route exact path="/0">
             <Redirect push to="/"/>

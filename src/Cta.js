@@ -1,10 +1,15 @@
 
 import React from 'react';  
+import { Link } from 'react-router-dom';
 import Styled from 'styled-components'
 
 import Arrow from './arrow.svg'
 
 const StyledCta = Styled.div`
+    a{
+        text-decoration:none;
+        color: white;
+    }
 
     h1 {
         font-family: Poppins;
@@ -42,11 +47,11 @@ const StyledCta = Styled.div`
         font-size: 18px;
     }
     
-    @media(max-width:450px){
+    @media(max-width:500px){
         position:relative;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: ${props => props.Justify ? "flex-start": "center"};
         min-height: 80vh;
         padding: 0 2.6rem;
         align-items:flex-start;
@@ -73,10 +78,11 @@ const Cta = (props) =>{
     }
 
     return( 
-        <StyledCta>
+        <StyledCta Justify={props.Justify}>
             <h1>{props.Heading}</h1>
             <p>{props.Subheading}</p>
-            <button onClick={handleClick}><img src={Arrow} alt="arrow"></img><div>GO TO MY STATS</div></button>
+            {props.button && <button onClick={handleClick}><img src={Arrow} alt="arrow"></img><Link to="/1">GO TO MY STATS</Link></button>}
+            
         </StyledCta>)
 }
 export default Cta

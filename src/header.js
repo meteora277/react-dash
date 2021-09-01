@@ -7,16 +7,13 @@ import Logo from './Logo'
 
 const StyledHeader = Styled.header`
 
-
-
     button{
         background-color: Transparent;
         border: none;
         display:none;
     }
-    
 
-    @media(max-width: 450px){
+    @media(max-width: 500px){
         position:relative;
         padding: 1.5rem 2rem;
         display: flex;

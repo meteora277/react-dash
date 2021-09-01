@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import styled, {createGlobalStyle} from 'styled-components'
-import { Route, Switch } from 'react-router-dom'
+import { Redirect, Route, Switch } from 'react-router-dom'
 
 import backgroundImage from './bg.jpg'
 import Navbar from './Navbar'
@@ -13,7 +13,7 @@ const Container = styled.div`
   display:flex;
   flex-direction: column; 
 
-  @media(max-width: 450px){
+  @media(max-width: 500px){
 
     padding: 0;
     display:block;
@@ -25,7 +25,7 @@ const Container = styled.div`
 const Body = styled.div`
   display:flex;
   
-  @media(max-width: 450px){
+  @media(max-width: 500px){
     display:block;
   }
 `
@@ -39,15 +39,17 @@ const GlobalStyle = createGlobalStyle`
     margin:0;
     padding:0;
     color:white;
-    background: url(${backgroundImage}) no-repeat right, black;
-    background-size: cover;
+    background: url(${backgroundImage}) no-repeat, black;
+    background-size: 200%;
     background-position: 20% 0;
+    background-attachment: fixed;
     width: 100%;
     height: 100vh;
     
 
-    @media(max-width: 450px){
+    @media(max-width: 500px){
       background-position: 10% 100%;
+      background-size:cover;
 
     }
   }
@@ -59,41 +61,50 @@ function App() {
   const [navbarVisible, setNavbarVisible] = useState(false)
 
   function toggleNavbar(){
-
-    setNavbarVisible(!navbarVisible)
+    if (window.innerWidth > 500){
+      setNavbarVisible(false)
+    } else (
+      setNavbarVisible(!navbarVisible)
+    )
   }
 
   return (
     <>
     <GlobalStyle/>
       <Body>
-        <Switch>
-          
-          <Route exact path="/">
-            <Navbar 
+
+        <Navbar 
               toggler={toggleNavbar}
               isVisible={navbarVisible} 
               links={["HOME", "MY STATS", "MEMBERS", "SETTINGS", "HELP"]}/>
-
-            <Container> 
-              <Header 
-                toggler={toggleNavbar}/>
-              <Cta Heading="DATA ANALYTICS" Subheading="MAKING SENSE OF YOUR TRAFFIC"/>
-            </Container> 
-          </Route>
-
-          <Route path="/0">
-            <Navbar 
-                toggler={toggleNavbar}
-                isVisible={navbarVisible} 
-                links={["HOME", "MY STATS", "MEMBERS", "SETTINGS", "HELP"]}/>
+          <Switch>
+          
+            <Route exact path="/">
 
               <Container> 
                 <Header 
                   toggler={toggleNavbar}/>
-                <Cta Heading="My Stats" Subheading="Here are some stats you might want to look at"/>
+                <Cta 
+                  Heading="DATA ANALYTICS" 
+                  Subheading="MAKING SENSE OF YOUR TRAFFIC" 
+                  button/>
               </Container> 
-              
+             </Route>
+
+          <Route path="/1">
+
+              <Container> 
+                <Header 
+                  toggler={toggleNavbar}/>
+                <Cta 
+                Heading="My Stats" 
+                Subheading="Here are some stats you might want to look at"
+                Justify/>
+              </Container> 
+          </Route>
+
+          <Route exact path="/0">
+            <Redirect push to="/"/>
           </Route>
 
 

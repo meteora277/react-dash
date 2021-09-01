@@ -1,8 +1,7 @@
 import React from 'react';
 import Styled from 'styled-components'
-import {Link} from 'react-router-dom'
-
 import arrow from './arrow.svg'
+import {Link} from 'react-router-dom'
 
 const StyledNavbar = Styled.nav`
 
@@ -11,9 +10,8 @@ const StyledNavbar = Styled.nav`
     background-color: #2C2931;
     transition-duration:1s;
     transition-property: display;
-    height: 100vh;
-    width:25%;
-    max-width: 13rem;
+    min-height: 100vh;
+    width: 13rem;
 
     li:nth-child(1){
         display:none;
@@ -35,7 +33,12 @@ const StyledNavbar = Styled.nav`
         transform: rotate(180deg) scale(0.8,0.8) translateX(0.2rem);
         text-align: left;
     }
-    button{
+    a{
+        display:block;
+        white-space: nowrap;
+    }
+
+    a, button{
 
         background-color: Transparent;
         border: none;
@@ -47,7 +50,7 @@ const StyledNavbar = Styled.nav`
         
     }
 
-    @media(max-width: 450px){
+    @media(max-width: 500px){
 
         position: absolute;
         width: 50%;
@@ -70,7 +73,7 @@ function Navbar(props){
     
     let links = props.links.map((item, i ) => (
 
-        <li key={i}><button>{item}</button></li>)
+        <li key={i}><Link to={`${i}`} onClick={props.toggler}>{item}</Link></li>)
     )
 
     return(

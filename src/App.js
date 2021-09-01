@@ -12,7 +12,7 @@ const Container = styled.div`
   display:flex;
   flex-direction: column; 
 
-  @media(max-width: 400px){
+  @media(max-width: 450px){
 
     padding: 0;
     display:block;
@@ -24,7 +24,7 @@ const Container = styled.div`
 const Body = styled.div`
   display:flex;
   
-  @media(max-width: 400px){
+  @media(max-width: 450px){
     display:block;
   }
 `
@@ -45,7 +45,7 @@ const GlobalStyle = createGlobalStyle`
     height: 100vh;
     
 
-    @media(max-width: 400px){
+    @media(max-width: 450px){
       background-position: 10% 100%;
 
     }

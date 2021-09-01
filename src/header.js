@@ -16,7 +16,7 @@ const StyledHeader = Styled.header`
     }
     
 
-    @media(max-width: 400px){
+    @media(max-width: 450px){
         position:relative;
         padding: 1.5rem 2rem;
         display: flex;

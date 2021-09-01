@@ -45,7 +45,7 @@ const StyledNavbar = Styled.nav`
         
     }
 
-    @media(max-width: 400px){
+    @media(max-width: 450px){
 
         position: absolute;
         width: 50%;

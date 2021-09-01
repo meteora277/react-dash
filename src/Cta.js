@@ -43,7 +43,7 @@ const StyledCta = Styled.div`
     }
 
 
-    @media(max-width:400px){
+    @media(max-width:450px){
 
         position:relative;
         display: flex;

@@ -14,6 +14,19 @@ const StyledCta = Styled.div`
         line-height: 89%;
     }
 
+    button:hover{
+        background-color: #00A3FF;
+    }
+    
+    p{
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 200;
+        font-size: 48px;
+        line-height: 111.4%;
+        color:#847D93;
+    }
+
     button {
         display: flex;
         justify-content: space-between;
@@ -27,24 +40,9 @@ const StyledCta = Styled.div`
         font-style: normal;
         font-weight: bold;
         font-size: 18px;
-        
     }
-    button:hover{
-        background-color: #00A3FF;
-
-    }
-    p{
-        font-family: Poppins;
-        font-style: normal;
-        font-weight: 200;
-        font-size: 48px;
-        line-height: 111.4%;
-        color:#847D93;
-    }
-
-
+    
     @media(max-width:450px){
-
         position:relative;
         display: flex;
         flex-direction: column;
@@ -52,7 +50,7 @@ const StyledCta = Styled.div`
         min-height: 80vh;
         padding: 0 2.6rem;
         align-items:flex-start;
-
+        
         h1 {
             margin: 0;
             padding: 0;
@@ -66,7 +64,7 @@ const StyledCta = Styled.div`
     }
 `
 
-const Cta = () =>{ 
+const Cta = (props) =>{ 
 
     function handleClick(event){
 
@@ -76,8 +74,8 @@ const Cta = () =>{
 
     return( 
         <StyledCta>
-            <h1>DATA ANALYTICS</h1>
-            <p>MAKING SENSE OF YOUR TRAFFIC</p>
+            <h1>{props.Heading}</h1>
+            <p>{props.Subheading}</p>
             <button onClick={handleClick}><img src={Arrow} alt="arrow"></img><div>GO TO MY STATS</div></button>
         </StyledCta>)
 }

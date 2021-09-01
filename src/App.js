@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import styled, {createGlobalStyle} from 'styled-components'
+import { Route, Switch } from 'react-router-dom'
 
 import backgroundImage from './bg.jpg'
 import Navbar from './Navbar'
@@ -8,7 +9,7 @@ import Header from './header'
 
 const Container = styled.div`
   
-  padding: 3.4rem 50% 3.4rem 6.4rem;
+  padding: 3.4rem 20% 3.4rem 10%;
   display:flex;
   flex-direction: column; 
 
@@ -66,16 +67,37 @@ function App() {
     <>
     <GlobalStyle/>
       <Body>
-        <Navbar 
-          toggler={toggleNavbar}
-          isVisible={navbarVisible} 
-          links={["HOME", "MY STATS", "MEMBERS", "SETTINGS", "HELP"]}/>
+        <Switch>
+          
+          <Route exact path="/">
+            <Navbar 
+              toggler={toggleNavbar}
+              isVisible={navbarVisible} 
+              links={["HOME", "MY STATS", "MEMBERS", "SETTINGS", "HELP"]}/>
 
-        <Container> 
-          <Header 
-            toggler={toggleNavbar}/>
-          <Cta/>
-        </Container> 
+            <Container> 
+              <Header 
+                toggler={toggleNavbar}/>
+              <Cta Heading="DATA ANALYTICS" Subheading="MAKING SENSE OF YOUR TRAFFIC"/>
+            </Container> 
+          </Route>
+
+          <Route path="/0">
+            <Navbar 
+                toggler={toggleNavbar}
+                isVisible={navbarVisible} 
+                links={["HOME", "MY STATS", "MEMBERS", "SETTINGS", "HELP"]}/>
+
+              <Container> 
+                <Header 
+                  toggler={toggleNavbar}/>
+                <Cta Heading="My Stats" Subheading="Here are some stats you might want to look at"/>
+              </Container> 
+              
+          </Route>
+
+
+        </Switch>
       </Body>
     </>
   );

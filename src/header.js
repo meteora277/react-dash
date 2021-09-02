@@ -14,9 +14,12 @@ const StyledHeader = Styled.header`
     }
 
     @media(max-width: 500px){
-        position:relative;
+        position:sticky;
+        top:0;
         padding: 1.5rem 2rem;
         display: flex;
+        background-color:black;
+        z-index: 9;
 
         div {
             position:absolute;

@@ -5,7 +5,11 @@ import Styled from 'styled-components'
 
 import Arrow from './media/arrow.svg'
 
+
+
 const StyledCta = Styled.div`
+
+
     a{
         text-decoration:none;
         color: white;
@@ -83,7 +87,7 @@ const Cta = (props) =>{
             <h1>{props.Heading}</h1>
             <p>{props.Subheading}</p>
             {props.button && <button onClick={handleClick}><img src={Arrow} alt="arrow"></img><Link to="/1">GO TO MY STATS</Link></button>}
-            {props.data && <main>{JSON.stringify(props.data)}</main>}
+            {props.data && <main>{props.data.map((item, i)=> (<img key={i} alt="User thumbnail" src={item.thumbnailUrl}></img>) )}</main>}
         </StyledCta>)
 }
 export default Cta

@@ -20,6 +20,7 @@ const Container = styled.div`
     display:block;
     width:initial;
     max-width: 100%;
+    
   }
 `
 
@@ -35,7 +36,9 @@ const GlobalStyle = createGlobalStyle`
   *, *::before, *::after{
     box-sizing: border-box;
   }
-
+  body::-webkit-scrollbar {
+    display:none;
+  }
   body {
     margin:0;
     padding:0;
@@ -67,7 +70,7 @@ function App() {
       .then((response) => response.json())
       .then((json) => {
 
-        let filteredData = json.filter(item => item.id < 10)
+        let filteredData = json.filter(item => item.id < 20)
         .map(item => {
           return ({thumbnailUrl: item.thumbnailUrl})
         })
@@ -139,8 +142,8 @@ function App() {
                 <Header 
                   toggler={toggleNavbar}/>
                 <Cta 
-                Heading="My Stats" 
-                Subheading="Here are some stats you might want to look at"
+                Heading="Settings" 
+                Subheading="Some settings you can change"
                 Justify/>
                 
             </Route>
@@ -150,10 +153,11 @@ function App() {
                 <Header 
                   toggler={toggleNavbar}/>
                 <Cta 
-                Heading="My Stats" 
-                Subheading="Here are some stats you might want to look at"
+                Heading="Help" 
+                Subheading="Contact us below"
                 Justify/>
-                
+                <input type="email" placeholder="email"/>
+                <textarea rows="4"/>
             </Route>
 
             <Route exact path="/0">

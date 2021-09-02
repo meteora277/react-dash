@@ -1,7 +1,7 @@
 import React from 'react';
 import Styled from 'styled-components'
 
-import hamburger from './menu.svg'
+import hamburger from './media/menu.svg'
 import Logo from './Logo'
 
 

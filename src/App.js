@@ -1,8 +1,8 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import styled, {createGlobalStyle} from 'styled-components'
 import { Redirect, Route, Switch } from 'react-router-dom'
 
-import backgroundImage from './bg.jpg'
+import backgroundImage from './media/bg.jpg'
 import Navbar from './Navbar'
 import Cta from './Cta'
 import Header from './header'
@@ -12,13 +12,14 @@ const Container = styled.div`
   padding: 3.4rem 20% 3.4rem 10%;
   display:flex;
   flex-direction: column; 
+  max-width: 80%;
 
   @media(max-width: 500px){
 
     padding: 0;
     display:block;
     width:initial;
-
+    max-width: 100%;
   }
 `
 
@@ -40,10 +41,10 @@ const GlobalStyle = createGlobalStyle`
     padding:0;
     color:white;
     background: url(${backgroundImage}) no-repeat, black;
-    background-size: 200%;
-    background-position: 20% 0;
+    background-size: cover;;
+    background-position: -20% 0;
     background-attachment: fixed;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     
 
@@ -59,6 +60,22 @@ const GlobalStyle = createGlobalStyle`
 function App() {
 
   const [navbarVisible, setNavbarVisible] = useState(false)
+  const [data, setData] = useState()
+
+  useEffect(() => {
+      fetch('https://jsonplaceholder.typicode.com/photos')
+      .then((response) => response.json())
+      .then((json) => {
+
+        let filteredData = json.filter(item => item.id < 10)
+        .map(item => {
+          return ({thumbnailUrl: item.thumbnailUrl})
+        })
+
+        setData(filteredData)
+      })  
+  },[])
+  
 
   function toggleNavbar(){
 
@@ -78,76 +95,73 @@ function App() {
               toggler={toggleNavbar}
               isVisible={navbarVisible} 
               links={["HOME", "MY STATS", "MEMBERS", "SETTINGS", "HELP"]}/>
+
+        <Container>
+
           <Switch>
           
             <Route exact path="/">
 
-              <Container> 
                 <Header 
                   toggler={toggleNavbar}/>
                 <Cta 
                   Heading="DATA ANALYTICS" 
                   Subheading="MAKING SENSE OF YOUR TRAFFIC" 
                   button/>
-              </Container> 
-             </Route>
+                
+            </Route>
 
-          <Route path="/1">
+            <Route path="/1">
 
-              <Container> 
+                  <Header 
+                    toggler={toggleNavbar}/>
+                  <Cta 
+                  Heading="My Stats" 
+                  Subheading="Here are some stats you might want to look at"
+                  Justify/>
+                  
+            </Route>
+
+            <Route path="/2">
+
+                <Header 
+                  toggler={toggleNavbar}/>
+                <Cta 
+                Heading="Members" 
+                Subheading="Some of the amazing people that use our service"
+                data={data}
+                Justify/>
+                
+            </Route>
+
+            <Route path="/3">
+
                 <Header 
                   toggler={toggleNavbar}/>
                 <Cta 
                 Heading="My Stats" 
                 Subheading="Here are some stats you might want to look at"
                 Justify/>
-              </Container> 
-          </Route>
+                
+            </Route>
 
-          <Route path="/2">
+            <Route path="/4">
 
-            <Container> 
-              <Header 
-                toggler={toggleNavbar}/>
-              <Cta 
-              Heading="My Stats" 
-              Subheading="Here are some stats you might want to look at"
-              Justify/>
-            </Container> 
-          </Route>
+                <Header 
+                  toggler={toggleNavbar}/>
+                <Cta 
+                Heading="My Stats" 
+                Subheading="Here are some stats you might want to look at"
+                Justify/>
+                
+            </Route>
 
-          <Route path="/3">
+            <Route exact path="/0">
+              <Redirect push to="/"/>
+            </Route>
 
-            <Container> 
-              <Header 
-                toggler={toggleNavbar}/>
-              <Cta 
-              Heading="My Stats" 
-              Subheading="Here are some stats you might want to look at"
-              Justify/>
-            </Container> 
-          </Route>
-
-          <Route path="/4">
-
-            <Container> 
-              <Header 
-                toggler={toggleNavbar}/>
-              <Cta 
-              Heading="My Stats" 
-              Subheading="Here are some stats you might want to look at"
-              Justify/>
-            </Container> 
-          </Route>
-
-
-
-          <Route exact path="/0">
-            <Redirect push to="/"/>
-          </Route>
-
-
-        </Switch>
+          </Switch>
+        </Container>
       </Body>
     </>
   );

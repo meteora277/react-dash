@@ -13,7 +13,6 @@ const StyledLogo = Styled.div`
 function Logo(){
     return (
         <StyledLogo>LOGO</StyledLogo>
-
     )
 }
 export default Logo

@@ -1,17 +1,17 @@
 import React from 'react';
 import Styled from 'styled-components'
-import arrow from './arrow.svg'
 import {Link} from 'react-router-dom'
+
+import arrow from './media/arrow.svg'
 
 const StyledNavbar = Styled.nav`
 
     position:relative;
     z-index: 10; 
     background-color: #2C2931;
-    transition-duration:1s;
-    transition-property: display;
     min-height: 100vh;
     width: 13rem;
+    
 
     li:nth-child(1){
         display:none;

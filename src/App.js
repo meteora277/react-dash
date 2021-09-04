@@ -13,6 +13,7 @@ const Container = styled.div`
   display:flex;
   flex-direction: column; 
   max-width: 80%;
+  
 
   @media(max-width: 500px){
 
@@ -45,7 +46,7 @@ const GlobalStyle = createGlobalStyle`
     color:white;
     background: url(${backgroundImage}) no-repeat, black;
     background-size: cover;;
-    background-position: -20% 0;
+    background-position: -10% 0;
     background-attachment: fixed;
     width: 100vw;
     height: 100vh;

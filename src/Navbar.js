@@ -1,5 +1,6 @@
 import React from 'react';
-import Styled from 'styled-components'
+import Styled, {css} from 'styled-components'
+import PropTypes from 'prop-types'
 
 import {Link} from 'react-router-dom'
 
@@ -54,8 +55,9 @@ const StyledNavbar = Styled.nav`
     @media(max-width: 500px){
 
         position: absolute;
+        transition: 0.15s ease-in-out;
         width: 50%;
-        display: ${props => props.uwu ? "block" : "none"};
+       ${props => (props.extended ? css`transform: translateX(-100%); opacity:0%;` : "transform: translateX(0%)")};
 
         ul{
             padding: 0;
@@ -79,7 +81,7 @@ function Navbar(props){
 
     return(
         
-        <StyledNavbar uwu={props.isVisible}>
+        <StyledNavbar extended={props.isVisible} >
             <ul>
                 <li className="backButton"><button onClick={props.toggler}><img src={arrow} alt="arrow"></img></button></li>
                 
@@ -88,5 +90,9 @@ function Navbar(props){
 
         </StyledNavbar>
         )
+    }
+
+    StyledNavbar.propTypes = {
+        extended:PropTypes.bool
     }
 export default Navbar

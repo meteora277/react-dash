@@ -16,6 +16,7 @@ const StyledCta = Styled.div`
     }
 
     h1 {
+        
         font-family: Poppins;
         font-style: normal;
         font-weight: 800;
@@ -57,6 +58,7 @@ const StyledCta = Styled.div`
         flex-direction: column;
         justify-content: ${props => props.Justify ? "flex-start": "center"};
         min-height: 80vh;
+        margin-top: 1rem;
         padding: 0 2.6rem;
         align-items:flex-start;
         
@@ -88,6 +90,7 @@ const Cta = (props) =>{
             <p>{props.Subheading}</p>
             {props.button && <button onClick={handleClick}><img src={Arrow} alt="arrow"></img><Link to="/1">GO TO MY STATS</Link></button>}
             {props.data && <main>{props.data.map((item, i)=> (<img key={i} alt="User thumbnail" src={item.thumbnailUrl}></img>) )}</main>}
+            {props.children}
         </StyledCta>)
 }
 export default Cta

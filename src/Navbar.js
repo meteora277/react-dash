@@ -13,6 +13,7 @@ const StyledNavbar = Styled.nav`
     background-color: #2C2931;
     min-height: 100vh;
     width: 13rem;
+    min-width:140px;
     
 
     li:nth-child(1){
@@ -55,9 +56,9 @@ const StyledNavbar = Styled.nav`
     @media(max-width: 500px){
 
         position: absolute;
-        transition: 0.15s ease-in-out;
+        transition: 0.2s ease-in-out;
         width: 50%;
-       ${props => (props.extended ? css`transform: translateX(-100%); opacity:0%;` : "transform: translateX(0%)")};
+       ${props => (props.extended ? "transform: translateX(0%)" : css`transform: translateX(-150%); opacity:0%;`)};
 
         ul{
             padding: 0;
@@ -83,7 +84,7 @@ function Navbar(props){
         
         <StyledNavbar extended={props.isVisible} >
             <ul>
-                <li className="backButton"><button onClick={props.toggler}><img src={arrow} alt="arrow"></img></button></li>
+                <li><button onClick={props.toggler}><img src={arrow} alt="arrow"></img></button></li>
                 
                 {links}
             </ul>

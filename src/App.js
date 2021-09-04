@@ -13,7 +13,6 @@ const Container = styled.div`
   display:flex;
   flex-direction: column; 
   max-width: 80%;
-  
 
   @media(max-width: 500px){
 
@@ -48,8 +47,8 @@ const GlobalStyle = createGlobalStyle`
     background-size: cover;;
     background-position: -10% 0;
     background-attachment: fixed;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     
 
     @media(max-width: 500px){
@@ -156,9 +155,14 @@ function App() {
                 <Cta 
                 Heading="Help" 
                 Subheading="Contact us below"
-                Justify/>
-                <input type="email" placeholder="email"/>
-                <textarea rows="4"/>
+                Justify
+                children={<>
+                <input style={{width:"100%"}}type="email" placeholder="email"/>
+                <textarea style={{width:"100%"}} rows="4"/>
+                </>
+              }
+                />
+                
             </Route>
 
             <Route exact path="/0">

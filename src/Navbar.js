@@ -1,10 +1,10 @@
-import React from 'react';
-import Styled, {css} from 'styled-components'
-import PropTypes from 'prop-types'
+import React from "react";
+import Styled, { css } from "styled-components";
+import PropTypes from "prop-types";
 
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 
-import arrow from './media/arrow.svg'
+import arrow from "./media/arrow.svg";
 
 const StyledNavbar = Styled.nav`
 
@@ -58,7 +58,13 @@ const StyledNavbar = Styled.nav`
         position: absolute;
         transition: 0.2s ease-in-out;
         width: 50%;
-       ${props => (props.extended ? "transform: translateX(0%)" : css`transform: translateX(-150%); opacity:0%;`)};
+       ${(props) =>
+         props.extended
+           ? "transform: translateX(0%)"
+           : css`
+               transform: translateX(-150%);
+               opacity: 0%;
+             `};
 
         ul{
             padding: 0;
@@ -70,30 +76,33 @@ const StyledNavbar = Styled.nav`
 
     }
 
-`
+`;
 
+function Navbar(props) {
+  let links = props.links.map((item, i) => (
+    <li key={i}>
+      <Link to={`${i}`} onClick={props.toggler}>
+        {item}
+      </Link>
+    </li>
+  ));
 
-function Navbar(props){
-    
-    let links = props.links.map((item, i ) => (
+  return (
+    <StyledNavbar extended={props.isVisible}>
+      <ul>
+        <li>
+          <button onClick={props.toggler}>
+            <img src={arrow} alt="arrow"></img>
+          </button>
+        </li>
 
-        <li key={i}><Link to={`${i}`} onClick={props.toggler}>{item}</Link></li>)
-    )
+        {links}
+      </ul>
+    </StyledNavbar>
+  );
+}
 
-    return(
-        
-        <StyledNavbar extended={props.isVisible} >
-            <ul>
-                <li><button onClick={props.toggler}><img src={arrow} alt="arrow"></img></button></li>
-                
-                {links}
-            </ul>
-
-        </StyledNavbar>
-        )
-    }
-
-    StyledNavbar.propTypes = {
-        extended:PropTypes.bool
-    }
-export default Navbar
+StyledNavbar.propTypes = {
+  extended: PropTypes.bool,
+};
+export default Navbar;

@@ -1,11 +1,8 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import Styled from "styled-components";
 
-import React from 'react';  
-import { Link } from 'react-router-dom';
-import Styled from 'styled-components'
-
-import Arrow from './media/arrow.svg'
-
-
+import Arrow from "./media/arrow.svg";
 
 const StyledCta = Styled.div`
     
@@ -56,7 +53,8 @@ const StyledCta = Styled.div`
         position:relative;
         display: flex;
         flex-direction: column;
-        justify-content: ${props => props.Justify ? "flex-start": "center"};
+        justify-content: ${(props) =>
+          props.Justify ? "flex-start" : "center"};
         min-height: 80vh;
         margin-top: 1rem;
         padding: 0 2.6rem;
@@ -74,23 +72,32 @@ const StyledCta = Styled.div`
         }
 
     }
-`
+`;
 
-const Cta = (props) =>{ 
+const Cta = (props) => {
+  function handleClick(event) {
+    event.preventDefault();
+  }
 
-    function handleClick(event){
-
-        event.preventDefault()
-
-    }
-
-    return( 
-        <StyledCta Justify={props.Justify}>
-            <h1>{props.Heading}</h1>
-            <p>{props.Subheading}</p>
-            {props.button && <button onClick={handleClick}><img src={Arrow} alt="arrow"></img><Link to="/1">GO TO MY STATS</Link></button>}
-            {props.data && <main>{props.data.map((item, i)=> (<img key={i} alt="User thumbnail" src={item.thumbnailUrl}></img>) )}</main>}
-            {props.children}
-        </StyledCta>)
-}
-export default Cta
+  return (
+    <StyledCta Justify={props.Justify}>
+      <h1>{props.Heading}</h1>
+      <p>{props.Subheading}</p>
+      {props.button && (
+        <button onClick={handleClick}>
+          <img src={Arrow} alt="arrow"></img>
+          <Link to="/1">GO TO MY STATS</Link>
+        </button>
+      )}
+      {props.data && (
+        <main>
+          {props.data.map((item, i) => (
+            <img key={i} alt="User thumbnail" src={item.thumbnailUrl}></img>
+          ))}
+        </main>
+      )}
+      {props.children}
+    </StyledCta>
+  );
+};
+export default Cta;

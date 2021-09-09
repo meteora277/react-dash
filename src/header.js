@@ -1,9 +1,8 @@
-import React from 'react';
-import Styled from 'styled-components'
+import React from "react";
+import Styled from "styled-components";
 
-import hamburger from './media/menu.svg'
-import Logo from './Logo'
-
+import hamburger from "./media/menu.svg";
+import Logo from "./Logo";
 
 const StyledHeader = Styled.header`
 
@@ -33,17 +32,15 @@ const StyledHeader = Styled.header`
     }
 
 
-`
-
+`;
 
 const Header = (props) => (
+  <StyledHeader>
+    <button onClick={props.toggler}>
+      <img src={hamburger} alt="menu"></img>
+    </button>
+    <Logo />
+  </StyledHeader>
+);
 
-    <StyledHeader>
-        <button onClick={props.toggler}><img src={hamburger} alt="menu"></img></button>
-        <Logo/>
-    </StyledHeader>
-
-)
-
-
-export default Header
+export default Header;
